@@ -5,8 +5,8 @@ import Category from "./components/CategorySection";
 function App() {
   return (
     <>
-      <Header></Header>
-      <Category></Category>
+      <Header />
+      <Category />
     </>
   );
 }

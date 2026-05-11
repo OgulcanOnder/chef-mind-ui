@@ -1,6 +1,6 @@
 import "../style/Header.css";
 import "antd/dist/reset.css";
-function Header() {
+const Header = () => {
   return (
     <header className="main-header">
       <div className="title">
@@ -8,6 +8,6 @@ function Header() {
       </div>
     </header>
   );
-}
+};
 
 export default Header;
