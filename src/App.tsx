@@ -1,8 +1,13 @@
-import './App.css';
+import "./style/App.css";
+import Header from "./components/Header";
+import Category from "./components/CategorySection";
 
 function App() {
   return (
-    <h1 className='main-text'>Hello World!!!</h1>
+    <>
+      <Header />
+      <Category />
+    </>
   );
 }
 

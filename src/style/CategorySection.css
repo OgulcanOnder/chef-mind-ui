@@ -1,0 +1,9 @@
+@import "~antd/dist/antd.css";
+.category-main {
+  padding: 40px;
+}
+.category-border {
+  width: 150px;
+  border: 2px solid gray;
+  border-radius: 5px;
+}
