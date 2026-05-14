@@ -2,3 +2,8 @@
 .App {
   text-align: center;
 }
+
+.app-contents {
+  display: flex;
+  width: 100%;
+}
