@@ -1,7 +1,6 @@
 @import "~antd/dist/antd.css";
 
 .recipe-main {
-  width: 80%;
   display: flex;
   justify-content: space-evenly;
   margin: 40px 0px 40px 0px;
