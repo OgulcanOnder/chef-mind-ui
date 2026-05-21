@@ -1,6 +1,5 @@
 import { Button, ConfigProvider, Divider, Drawer, List, Space } from "antd";
 import { useState } from "react";
-import { recipes, Recipe } from "../data/recipes";
 import "../style/ProduceRecipes.css";
 
 const ProduceRecipes = () => {
@@ -15,21 +14,12 @@ const ProduceRecipes = () => {
   return (
     <div className="produce-recipe-main">
       <Divider titlePlacement="start">Produce Recipe</Divider>
-      <List<Recipe>
+      <List
         header={
           <div>
             <b>Selected Material List</b>
           </div>
         }
-        dataSource={recipes}
-        renderItem={(recipe: Recipe) => (
-          <List.Item key={recipe.id}>
-            <List.Item.Meta
-              title={recipe.title}
-              description={recipe.content}
-            />
-          </List.Item>
-        )}
       />
       <div>
         <ConfigProvider
