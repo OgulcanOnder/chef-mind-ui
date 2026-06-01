@@ -9,17 +9,10 @@ import { RecipeProps } from "../data/ingredients";
 const { Meta } = Card;
 const Recipe = ({ categoryId }: RecipeProps) => {
   const [ingredients, setIngredients] = useState<Ingredient[]>([]);
-
   useEffect(() => {
-    const fetchIngredients = async () => {
-      try {
-        const results = await getAllIngredients();
-        setIngredients(results);
-      } catch (error) {
-        console.error(error);
-      }
-    };
-    fetchIngredients();
+    getAllIngredients()
+      .then(setIngredients)
+      .catch(() => {});
   }, []);
   return (
     <>

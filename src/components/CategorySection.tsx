@@ -8,16 +8,10 @@ import { getAllIngredientsCategory } from "../service/ingredientCategoryService"
 const Category = () => {
   const [ingredientCategory, setIngredientCategory] = useState<IngredientCategory[]>([]);
   useEffect(() => {
-    const fetchIngredientCategories = async () => {
-      try {
-        const results = await getAllIngredientsCategory();
-        setIngredientCategory(results);
-      } catch (error) {
-        console.error(error);
-      }
-    };
-    fetchIngredientCategories();
-  });
+    getAllIngredientsCategory()
+      .then(setIngredientCategory)
+      .catch(() => {});
+  }, []);
   return (
     <>
       <div className="category-main">
