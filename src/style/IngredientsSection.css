@@ -1,0 +1,45 @@
+@import "~antd/dist/antd.css";
+
+.recipe-main {
+  display: flex;
+  justify-content: space-evenly;
+  margin: 40px 0px 40px 0px;
+  padding: 3px;
+}
+
+.linear-gradient-button {
+  margin-top: 30px;
+  justify-content: end;
+  &::before {
+    background: linear-gradient(135deg, #898796, #5c9db3);
+    position: absolute;
+    inset: -1px;
+    opacity: 1;
+    transition: all 0.3s;
+    border-radius: inherit;
+    color: white;
+    align-items: center;
+  }
+
+  &:hover::before {
+    opacity: 0;
+  }
+
+  &:hover {
+    background: linear-gradient(135deg, #898796, #5c9db3) !important;
+  }
+}
+
+.recipe-card {
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+
+  &:hover img {
+    transform: scale(1.05);
+    border-radius: 5px;
+  }
+}
+
+.add-button {
+  display: flex;
+  justify-content: end;
+}
