@@ -6,4 +6,10 @@ export interface Ingredient {
 
 export interface RecipeProps {
   categoryId: number;
+  onAdd: (ingredient: Ingredient) => void;
+}
+
+export interface ProduceIngredientProps {
+  selectedIngredients: Ingredient[];
+  onRemove: (id: number) => void;
 }
