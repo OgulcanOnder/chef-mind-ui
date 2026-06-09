@@ -1,14 +1,10 @@
 import "../style/CategorySection.css";
 import "antd/dist/reset.css";
 import Recipe from "./IngredientsSection";
-import { IngredientCategory } from "../data/ingredientCategory";
+import { IngredientCategory, Props } from "../data/ingredientCategory";
 import { useState, useEffect } from "react";
 import { getAllIngredientsCategory } from "../service/ingredientCategoryService";
-import { Ingredient } from "../data/ingredients";
 
-interface Props {
-  onAdd: (ingredient: Ingredient) => void;
-}
 const Category = ({ onAdd }: Props) => {
   const [ingredientCategory, setIngredientCategory] = useState<IngredientCategory[]>([]);
   useEffect(() => {
