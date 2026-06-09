@@ -1,8 +1,10 @@
 import { Button, ConfigProvider, Divider, Drawer, List, Space } from "antd";
 import { useState } from "react";
+import { Ingredient, ProduceIngredientProps } from "../data/ingredients";
 import "../style/ProduceRecipes.css";
+import { DeleteOutlined } from "@ant-design/icons";
 
-const ProduceRecipes = () => {
+const ProduceRecipes = ({ selectedIngredients, onRemove }: ProduceIngredientProps) => {
   const [open, setOpen] = useState(false);
   const showDrawer = () => {
     setOpen(true);
@@ -20,6 +22,22 @@ const ProduceRecipes = () => {
             <b>Selected Material List</b>
           </div>
         }
+        dataSource={selectedIngredients}
+        locale={{ emptyText: " No materials added" }}
+        renderItem={(item: Ingredient) => (
+          <List.Item
+            actions={[
+              <Button
+                type="text"
+                danger
+                icon={<DeleteOutlined />}
+                onClick={() => onRemove(item.id)}
+              />,
+            ]}
+          >
+            {item.name}
+          </List.Item>
+        )}
       />
       <div>
         <ConfigProvider

@@ -4,8 +4,12 @@ import Recipe from "./IngredientsSection";
 import { IngredientCategory } from "../data/ingredientCategory";
 import { useState, useEffect } from "react";
 import { getAllIngredientsCategory } from "../service/ingredientCategoryService";
+import { Ingredient } from "../data/ingredients";
 
-const Category = () => {
+interface Props {
+  onAdd: (ingredient: Ingredient) => void;
+}
+const Category = ({ onAdd }: Props) => {
   const [ingredientCategory, setIngredientCategory] = useState<IngredientCategory[]>([]);
   useEffect(() => {
     getAllIngredientsCategory()
@@ -24,7 +28,10 @@ const Category = () => {
             >
               <h3>{ingredientCategory.ingredientCategoryName}</h3>
               <p className="category-border"></p>
-              <Recipe categoryId={ingredientCategory.id} />
+              <Recipe
+                categoryId={ingredientCategory.id}
+                onAdd={onAdd}
+              />
             </div>
           ))}
       </div>

@@ -7,7 +7,8 @@ import { Ingredient } from "../data/ingredients";
 import { RecipeProps } from "../data/ingredients";
 
 const { Meta } = Card;
-const Recipe = ({ categoryId }: RecipeProps) => {
+
+const Recipe = ({ categoryId, onAdd }: RecipeProps) => {
   const [ingredients, setIngredients] = useState<Ingredient[]>([]);
   useEffect(() => {
     getAllIngredients()
@@ -45,6 +46,7 @@ const Recipe = ({ categoryId }: RecipeProps) => {
                       <Button
                         type="primary"
                         size="medium"
+                        onClick={() => onAdd(ingredient)}
                       >
                         Add
                       </Button>
