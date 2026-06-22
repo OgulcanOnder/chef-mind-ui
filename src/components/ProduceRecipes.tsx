@@ -87,7 +87,9 @@ const ProduceRecipes = ({ selectedIngredients, onRemove }: ProduceIngredientProp
                     <p key={index}>{alt}</p>
                   ))}
                 </>
-              ) : null}
+              ) : (
+                <></>
+              )}
             </Drawer>
           </Space>
         </ConfigProvider>
