@@ -1,13 +1,24 @@
-import { Button, ConfigProvider, Divider, Drawer, List, Space } from "antd";
+import { Button, ConfigProvider, Divider, Drawer, List, Space, Spin } from "antd";
 import { useState } from "react";
 import { Ingredient, ProduceIngredientProps } from "../data/ingredients";
 import "../style/ProduceRecipes.css";
 import { DeleteOutlined } from "@ant-design/icons";
+import { generateRecipeByIngredients } from "../service/produceRecipes";
+import { RecipeResponse } from "../data/produceRecipe";
 
 const ProduceRecipes = ({ selectedIngredients, onRemove }: ProduceIngredientProps) => {
+  const [recipes, setRecipes] = useState<RecipeResponse | null>(null);
+  const [loading, setLoading] = useState(false);
   const [open, setOpen] = useState(false);
   const showDrawer = () => {
     setOpen(true);
+    setLoading(true);
+    const ingredients = selectedIngredients.map((ingredient) => ingredient.name);
+
+    generateRecipeByIngredients(ingredients)
+      .then((data) => setRecipes(data))
+      .catch(() => {})
+      .finally(() => setLoading(false));
   };
   const onClose = () => {
     setOpen(false);
@@ -64,9 +75,21 @@ const ProduceRecipes = ({ selectedIngredients, onRemove }: ProduceIngredientProp
                 },
               }}
             >
-              <p> AI Recipe Will Come...</p>
-              <p> AI Recipe Will Come...</p>
-              <p> AI Recipe Will Come...</p>
+              {loading ? (
+                <Spin />
+              ) : recipes ? (
+                <>
+                  <p style={{ fontWeight: "bold" }}>{recipes.description}</p>
+                  {recipes.steps.map((step, index) => (
+                    <p key={index}>{step}</p>
+                  ))}
+                  {recipes.alternatives.map((alt, index) => (
+                    <p key={index}>{alt}</p>
+                  ))}
+                </>
+              ) : (
+                <></>
+              )}
             </Drawer>
           </Space>
         </ConfigProvider>
